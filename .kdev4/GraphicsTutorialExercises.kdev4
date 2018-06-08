@@ -1,0 +1,49 @@
+[Buildset]
+BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x01\x00\x00\x002\x00G\x00r\x00a\x00p\x00h\x00i\x00c\x00s\x00T\x00u\x00t\x00o\x00r\x00i\x00a\x00l\x00E\x00x\x00e\x00r\x00c\x00i\x00s\x00e\x00s)
+
+[CMake]
+Build Directory Count=1
+Current Build Directory Index-Host System=0
+
+[CMake][CMake Build Directory 0]
+Build Directory Path=/home/demi/Git/GraphicsTutorialExercises/build
+Build Type=Debug
+CMake Binary=/bin/cmake
+CMake Executable=/bin/cmake
+Environment Profile=
+Extra Arguments=
+Install Directory=/usr/local
+Runtime=Host System
+
+[CustomDefinesAndIncludes][ProjectPath0]
+Path=.
+parseAmbiguousAsCPP=true
+parserArguments=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -std=c++11
+parserArgumentsC=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -std=c99
+
+[CustomDefinesAndIncludes][ProjectPath0][Compiler]
+Name=GCC
+
+[Launch]
+Launch Configurations=Launch Configuration 0
+
+[Launch][Launch Configuration 0]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=graphicstutorialexercises
+Type=Native Application
+
+[Launch][Launch Configuration 0][Data]
+Arguments=
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x02\x00\x00\x002\x00G\x00r\x00a\x00p\x00h\x00i\x00c\x00s\x00T\x00u\x00t\x00o\x00r\x00i\x00a\x00l\x00E\x00x\x00e\x00r\x00c\x00i\x00s\x00e\x00s\x00\x00\x002\x00g\x00r\x00a\x00p\x00h\x00i\x00c\x00s\x00t\x00u\x00t\x00o\x00r\x00i\x00a\x00l\x00e\x00x\x00e\x00r\x00c\x00i\x00s\x00e\x00s)
+Dependency Action=Build
+EnvironmentGroup=
+Executable=file:///home/demi/Git/GraphicsTutorialExercises
+External Terminal=konsole --noclose --workdir %workdir -e %exe
+Project Target=GraphicsTutorialExercises,graphicstutorialexercises
+Use External Terminal=true
+Working Directory=
+isExecutable=false
+
+[Project]
+VersionControlSupport=

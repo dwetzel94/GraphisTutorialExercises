@@ -1,0 +1,7 @@
+/home/demi/Git/GraphicsTutorialExercises/CMakeFiles/install/strip.dir
+/home/demi/Git/GraphicsTutorialExercises/CMakeFiles/edit_cache.dir
+/home/demi/Git/GraphicsTutorialExercises/CMakeFiles/rebuild_cache.dir
+/home/demi/Git/GraphicsTutorialExercises/CMakeFiles/graphicstutorialexercises.dir
+/home/demi/Git/GraphicsTutorialExercises/CMakeFiles/list_install_components.dir
+/home/demi/Git/GraphicsTutorialExercises/CMakeFiles/install/local.dir
+/home/demi/Git/GraphicsTutorialExercises/CMakeFiles/install.dir
