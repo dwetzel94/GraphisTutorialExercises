@@ -2,56 +2,58 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <iostream>
-#include "Animation.h"
-#include "Animation.cpp"
+#include "Player.h"
+#include "Player.cpp"
 
 
 using namespace std ;
+using namespace sf ;
 
 int main()
 {
     
-    sf::RenderWindow window(sf::VideoMode(512, 512), "SFML Tutorial", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize) ;
-    sf::RectangleShape player(sf::Vector2f(150, 100)) ; //sets size of object
-//     player.setFillColor(sf::Color::Red);
-    player.setOrigin(50.0f, 50.0f); //changes origin of object to the center
+    RenderWindow window(VideoMode(512, 512), "SFML Tutorial", Style::Close | Style::Titlebar | Style::Resize) ;
+//   RectangleShape player(Vector2f(150, 100)) ; //sets size of object
+//     player.setFillColor(Color::Red);
+//    player.setOrigin(50.0f, 50.0f); //changes origin of object to the center
+//    player.setPosition(206.0f, 206.0f);
     
     //creating textures
-    sf::Texture playerTexture ;
-    playerTexture.loadFromFile("/home/demi/Git/GraphicsTutorialExercises/tux_from_linux.png") ; // UV coordinates
-//     sf::Texture mushroom ;
-//     mushroom.loadFromFile("/home/demi/Git/GraphicsTutorialExercises/mushroom.png") ;
-    player.setTexture(&playerTexture) ;
+    Texture playerTexture ;
+    playerTexture.loadFromFile("../Textures/tux_from_linux.png") ; // UV coordinates
+//     Texture mushroom ;
+//     mushroom.loadFromFile("../Textures/mushroom.png") ;
+//    player.setTexture(&playerTexture) ;
     
-    Animation animation(&playerTexture, sf::Vector2u(3, 9), 0.3f) ;
+    Player player(&playerTexture, Vector2u(3, 9), 0.3f, 100.0f) ;
     
     float deltaTime = 0.0f ;
-    sf::Clock clock ;
+    Clock clock ;
     
-//     sf::Vector2u textureSize = playerTexture.getSize() ;
-//     textureSize.x /= 3 ;
-//     textureSize.y /= 9 ;
+    Vector2u textureSize = playerTexture.getSize() ;
+    textureSize.x /= 3 ;
+    textureSize.y /= 9 ;
     
-//     player.setTextureRect(sf::IntRect(textureSize.x * 2, textureSize.y * 8, textureSize.x, textureSize.y)) ;
+//    player.setTextureRect(IntRect(textureSize.x * 2, textureSize.y * 8, textureSize.x, textureSize.y)) ;
     
     while(window.isOpen())
     {
         deltaTime = clock.restart().asSeconds() ;
         
-        sf::Event evnt ;
+        Event evnt ;
         while(window.pollEvent(evnt))
         {
             switch(evnt.type)
             {
-                case sf::Event::Closed:
+                case Event::Closed:
                     window.close();
                     break ;
-                case sf::Event::Resized:
+                case Event::Resized:
                     //cout << "New window width: " << evnt.size.width << " New window height: " << evnt.size.height << endl ;
                     
                     printf("New Window Width: %i New window height: %i \n",evnt.size.width, evnt.size.height) ;
                     break ;
-                /*case sf::Event::TextEntered: //prints out whatever text the user inputs while running the program
+                /*case Event::TextEntered: //prints out whatever text the user inputs while running the program
                     if(evnt.text.unicode < 128)
                     {
                         printf("%c", evnt.text.unicode) ;
@@ -61,41 +63,42 @@ int main()
             
         }
         
-        animation.Update(0, deltaTime, false) ;
-        player.setTextureRect(animation.uvRect);
+       player.Update(deltaTime);
+       
         
         //button controls
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
-        {
-            player.move(-0.1f, 0.0f);
-        }
-        
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
-        {
-            player.move(0.1f, 0.0f);
-        }
-        
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
-        {
-            player.move(0.0f, -0.1f);
-        }
-        
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
-        {
-            player.move(0.0f, 0.1f);
-        }
+//         if(Keyboard::isKeyPressed(Keyboard::Key::Left))
+//         {
+//             player.move(-0.1f, 0.0f);
+//         }
+//         
+//         if(Keyboard::isKeyPressed(Keyboard::Key::Right))
+//         {
+//             player.move(0.1f, 0.0f);
+//         }
+//         
+//         if(Keyboard::isKeyPressed(Keyboard::Key::Up))
+//         {
+//             player.move(0.0f, -0.1f);
+//         }
+//         
+//         if(Keyboard::isKeyPressed(Keyboard::Key::Down))
+//         {
+//             player.move(0.0f, 0.1f);
+//         }
 //         
         //mouse controls
-//         if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+//         if(Mouse::isButtonPressed(Mouse::Left))
 //         {
-//             sf::Vector2i mousePos = sf::Mouse::getPosition(window) ;
+//             Vector2i mousePos = Mouse::getPosition(window) ;
 //             player.setPosition((float)mousePos.x, (float)mousePos.y) ;
 //         }
 
 
         
-        window.clear(sf::Color::Green); //can also set a bg color with sf::Color::[color]
-        window.draw(player) ; //will leave the drawn path in the window unless window.clear is called 
+        window.clear(Color::Yellow); //can also set a bg color with Color::[color]
+        player.Draw(window);
+        //window.draw(player) ; //will leave the drawn path in the window unless window.clear is called 
         window.display() ;
     }
     
