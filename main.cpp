@@ -61,8 +61,8 @@ int main()
             
         }
         
-        animation.Update(0, deltaTime) ;
-            player.setTextureRect(animation.uvRect);
+        animation.Update(0, deltaTime, false) ;
+        player.setTextureRect(animation.uvRect);
         
         //button controls
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
@@ -94,7 +94,7 @@ int main()
 
 
         
-        window.clear(sf::Color::Red); //can also set a bg color with sf::Color::[color]
+        window.clear(sf::Color::Green); //can also set a bg color with sf::Color::[color]
         window.draw(player) ; //will leave the drawn path in the window unless window.clear is called 
         window.display() ;
     }
