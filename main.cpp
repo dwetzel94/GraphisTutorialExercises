@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include "Animation.h"
+#include "Animation.cpp"
 
 
 using namespace std ;
@@ -22,16 +23,21 @@ int main()
 //     mushroom.loadFromFile("/home/demi/Git/GraphicsTutorialExercises/mushroom.png") ;
     player.setTexture(&playerTexture) ;
     
+    Animation animation(&playerTexture, sf::Vector2u(3, 9), 0.3f) ;
     
+    float deltaTime = 0.0f ;
+    sf::Clock clock ;
     
-    sf::Vector2u textureSize = playerTexture.getSize() ;
-    textureSize.x /= 3 ;
-    textureSize.y /= 9 ;
+//     sf::Vector2u textureSize = playerTexture.getSize() ;
+//     textureSize.x /= 3 ;
+//     textureSize.y /= 9 ;
     
-    player.setTextureRect(sf::IntRect(textureSize.x * 2, textureSize.y * 8, textureSize.x, textureSize.y)) ;
+//     player.setTextureRect(sf::IntRect(textureSize.x * 2, textureSize.y * 8, textureSize.x, textureSize.y)) ;
     
     while(window.isOpen())
     {
+        deltaTime = clock.restart().asSeconds() ;
+        
         sf::Event evnt ;
         while(window.pollEvent(evnt))
         {
@@ -52,7 +58,11 @@ int main()
                     }
                     break ; */                   
             }
+            
         }
+        
+        animation.Update(0, deltaTime) ;
+            player.setTextureRect(animation.uvRect);
         
         //button controls
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
@@ -84,7 +94,7 @@ int main()
 
 
         
-        window.clear(); //can also set a bg color with sf::Color::[color]
+        window.clear(sf::Color::Red); //can also set a bg color with sf::Color::[color]
         window.draw(player) ; //will leave the drawn path in the window unless window.clear is called 
         window.display() ;
     }
