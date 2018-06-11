@@ -6,8 +6,9 @@
 
 
 using namespace std ;
+using namespace sf ;
 
-Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime)
+Animation::Animation(Texture* texture, Vector2u imageCount, float switchTime)
 {
     this->imageCount = imageCount ;
     this->switchTime = switchTime ;
@@ -45,6 +46,7 @@ void Animation::Update(int row, float deltaTime, bool faceRight)
     else
     {
         uvRect.left = (currentImage.x + 1) * abs(uvRect.width) ;
-        uvRect.width = -abs(uvRect.width) ; //inverts image when going left
+        uvRect.width = -abs(uvRect.width) ;
+        
     }
 }
